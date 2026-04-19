@@ -1,16 +1,8 @@
-// Проверки аудита — иллюстрация того, что было протестировано.
-// Запуск не предполагается: окружение (geth, компиляция через solc, фабрики
-// контрактов) удалено. Здесь оставлены только сами проверки и их смысл.
+// ────── Ф1: addNewCalculator — регистрация новой версии калькулятора ──────
 
-const { ethers } = require("ethers");
-const assert = require("node:assert/strict");
-
-// v1 с версией 1.0.0 передаётся в конструктор CalculatorCaller
+// CalculatorCaller разворачивается с начальной версией 1.0.0
 const v1 = await CalcF.deploy(1, 0, 0);
 const caller = await CallerF.deploy(await v1.getAddress());
-
-
-// ────── Ф1: addNewCalculator — регистрация новой версии калькулятора ──────
 
 // новая версия регистрируется и становится последней
 const v2 = await CalcF.deploy(2, 0, 0);
